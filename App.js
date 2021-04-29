@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import MapView, { Marker, Callout } from "react-native-maps";
+import MapView, {  Marker, Callout } from "react-native-maps";
+//PROVIDER_GOOGLE,
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
       <MapView
+        //provider={PROVIDER_GOOGLE}
         style={StyleSheet.absoluteFillObject}
         initialRegion={{
           latitude: 40.6734,
@@ -31,13 +33,6 @@ export default function App() {
           height={30}
           // icon="red"
         >
-          {/* <Callout
-            style={styles.callout}
-            tooltip={true}
-            onPress={() => navigation.navigate("GiftDetail", data)}
-          >
-            <CalloutText>{data.title}</CalloutText>
-          </Callout> */}
         </Marker>
       </MapView>
     </View>
@@ -51,4 +46,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  map: {
+    height: '100%'
+  }
 });
