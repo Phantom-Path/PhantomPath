@@ -13,16 +13,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      // "config": {
-      //   "googleMaps": {
-      //     "apiKey": "AIzaSyBeWkpKhK1nC-tDdfyas_ze7WFtfueHFjE"
-      //   }
-      // }
+      "bundleIdentifier": "com.wonderboyz.phantompath"
     },
     "android": {
       "adaptiveIcon": {
