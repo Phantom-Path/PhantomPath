@@ -3,12 +3,12 @@ import React from "react";
 // import MapView, {  Marker, Callout } from "react-native-maps";
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Login from './components/Login'
-import Home from './components/Home'
-import Friends from './components/Friends'
-import Chat from './components/Chat'
-import CreateChat from './components/CreateChat'
-import Map from './components/Map'
+import Login from './screens/Login'
+import Home from './screens/Home'
+import Friends from './screens/Friends'
+import Chat from './screens/Chat'
+import CreateChat from './screens/CreateChat'
+import Map from './screens/Map'
 //PROVIDER_GOOGLE,
 
 
@@ -25,13 +25,13 @@ function MyStack () {
       // }}
     >
       <Stack.Screen
-        name="Enter"
+        name="Login"
         component={Login}
         // options={{
         //   title: 'Awesome app',
         // }}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Home"
         component={Home}
         // options={{
@@ -45,7 +45,7 @@ function MyStack () {
         //   title: 'My profile',
         // }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Friends"
         component={Friends}
         // options={{

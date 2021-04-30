@@ -1,12 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
-import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
+import MapView, {  Marker, Callout } from "react-native-maps";
+
+//PROVIDER_GOOGLE,
 
 export default function Map() {
   return (
-    <View style={styles.container}>
+    <View>
       <MapView
-        provider={PROVIDER_GOOGLE}
+        // provider={PROVIDER_GOOGLE}
         style={StyleSheet.absoluteFillObject}
         initialRegion={{
           latitude: 40.6734,
@@ -22,11 +24,11 @@ export default function Map() {
   );
 }
 
-// const styles = StyleSheet.create({
-//   Map: {
-//     // flex: 1,
-//     // backgroundColor: '#fff',
-//     // alignItems: 'center',
-//     // justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  Map: {
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
+});
