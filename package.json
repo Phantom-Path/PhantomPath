@@ -17,7 +17,7 @@
     "@react-navigation/stack": "^5.14.4",
     "axios": "^0.18.0",
     "chalk": "^2.4.1",
-    "expo": "~41.0.1",
+    "expo": "^41.0.1",
     "expo-google-sign-in": "~9.1.0",
     "expo-status-bar": "~1.0.4",
     "express": "^4.14.0",
