@@ -1,52 +1,81 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MapView, {  Marker, Callout } from "react-native-maps";
+// import { StyleSheet, Text, View } from "react-native";
+// import MapView, {  Marker, Callout } from "react-native-maps";
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Login from './components/Login'
+import Home from './components/Home'
+import Friends from './components/Friends'
+import Chat from './components/Chat'
+import CreateChat from './components/CreateChat'
+import Map from './components/Map'
 //PROVIDER_GOOGLE,
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+function MyStack () {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <MapView
-        //provider={PROVIDER_GOOGLE}
-        style={StyleSheet.absoluteFillObject}
-        initialRegion={{
-          latitude: 40.6734,
-          longitude: -74.0083,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
-        loadingEnabled
-        loadingBackgroundColor="white"
-        loadingIndicatorColor="black"
-      >
-        <Marker
-          coordinate={{
-            latitude: 40.705137,
-            longitude: -74.007624,
-          }}
-          // key={idx}
-          image={require('./assets/ironman.png')}
-          width={30}
-          height={30}
-          // icon="red"
-        >
-        </Marker>
-      </MapView>
-    </View>
+    <Stack.Navigator
+      initialRouteName="Login"
+      // headerMode="screen"
+      // screenOptions={{
+      //   headerTintColor: 'white',
+      //   headerStyle: { backgroundColor: 'tomato' },
+      // }}
+    >
+      <Stack.Screen
+        name="Enter"
+        component={Login}
+        // options={{
+        //   title: 'Awesome app',
+        // }}
+      />
+      {/* <Stack.Screen
+        name="Home"
+        component={Home}
+        // options={{
+        //   title: 'Awesome app',
+        // }}
+      />
+      <Stack.Screen
+        name="Map"
+        component={Map}
+        // options={{
+        //   title: 'My profile',
+        // }}
+      />
+      <Stack.Screen
+        name="Friends"
+        component={Friends}
+        // options={{
+        //   title: 'My profile',
+        // }}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={Chat}
+        // options={{
+        //   gestureEnabled: false,
+        // }}
+      />
+      <Stack.Screen
+        name="CreateChat"
+        component={CreateChat}
+        // options={{
+        //   gestureEnabled: false,
+        // }}
+      /> */}
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  map: {
-    height: '100%'
-  }
-});
+
+export default function App() {
+  return (
+    // <Text>Hello World!</Text>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
