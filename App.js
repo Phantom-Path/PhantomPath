@@ -24,34 +24,28 @@ if (firebase.apps.length === 0) {
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import Login from "./screens/Login";
 import Home from "./screens/Home";
 import Friends from "./screens/Friends";
 import Chat from "./screens/Chat";
 import CreateChat from "./screens/CreateChat";
 import Map from "./screens/Map";
 
-import RegisterScreen from "./component/auth/Register";
+import Landing from "./screens/Landing";
+import Register from "./screens/Register";
+import Login from "./screens/Register";
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Register"
+      initialRouteName="Home"
       // headerMode="screen"
       // screenOptions={{
       //   headerTintColor: 'white',
       //   headerStyle: { backgroundColor: 'tomato' },
       // }}
     >
-      <Stack.Screen
-        name="Register"
-        component={RegisterScreen}
-        // options={{
-        //   title: 'Awesome app',
-        // }}
-      />
       <Stack.Screen
         name="Home"
         component={Home}
@@ -91,15 +85,6 @@ function MyStack() {
   );
 }
 
-// export default function App() {
-//   return (
-//     // <Text>Hello World!</Text>
-//     <NavigationContainer>
-//       <MyStack />
-//     </NavigationContainer>
-//   );
-// }
-
 export default class App extends React.Component {
   constructor(props) {
     super();
@@ -136,57 +121,22 @@ export default class App extends React.Component {
     if (!loggedIn) {
       return (
         <NavigationContainer>
-          <MyStack />
+          <Stack.Navigator initialRouteName="Landing">
+            <Stack.Screen
+              name="Landing"
+              component={Landing}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Login" component={Login} />
+          </Stack.Navigator>
         </NavigationContainer>
       );
     }
 
     return (
       <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Home"
-          // headerMode="screen"
-          // screenOptions={{
-          //   headerTintColor: 'white',
-          //   headerStyle: { backgroundColor: 'tomato' },
-          // }}
-        >
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            // options={{
-            //   title: 'Awesome app',
-            // }}
-          />
-          <Stack.Screen
-            name="Map"
-            component={Map}
-            // options={{
-            //   title: 'My profile',
-            // }}
-          />
-          {/* <Stack.Screen
-          name="Friends"
-          component={Friends}
-          // options={{
-          //   title: 'My profile',
-          // }}
-        />
-        <Stack.Screen
-          name="Chat"
-          component={Chat}
-          // options={{
-          //   gestureEnabled: false,
-          // }}
-        />
-        <Stack.Screen
-          name="CreateChat"
-          component={CreateChat}
-          // options={{
-          //   gestureEnabled: false,
-          // }}
-        /> */}
-        </Stack.Navigator>
+        <MyStack />
       </NavigationContainer>
     );
   }
