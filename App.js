@@ -1,7 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-// import MapView, {  Marker, Callout } from "react-native-maps";
+
+import { Provider } from 'react-redux'
+import { store } from './store'
+
+
 
 import * as firebase from "firebase";
 // import { Provider } from 'react-redux'
@@ -25,10 +29,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
 import Home from "./screens/Home";
+import Map from "./screens/Map";
 import Friends from "./screens/Friends";
 import Chat from "./screens/Chat";
 import CreateChat from "./screens/CreateChat";
-import Map from "./screens/Map";
 
 import Landing from "./screens/Landing";
 import Register from "./screens/Register";
@@ -135,9 +139,11 @@ export default class App extends React.Component {
     }
 
     return (
+      <Provider store={store}>
       <NavigationContainer>
         <MyStack />
       </NavigationContainer>
+      </Provider>
     );
   }
 }
