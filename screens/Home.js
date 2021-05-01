@@ -39,13 +39,13 @@ export class Home extends Component {
                             <MaterialCommunityIcons name="map-marker-radius" color={color} size={26} />
                         ),
                     }} />
-                {/* <Tab.Screen name="Friends" component={Friends} navigation={this.props.navigation}
+                {/* <Tab.Screen name="Chat" component={Chat} navigation={this.props.navigation}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="magnify" color={color} size={26} />
                         ),
                     }} /> */}
-                <Tab.Screen name="Friends" component={Friends}
+                <Tab.Screen name="FriendsScreen" component={Friends}
                     listeners={({ navigation }) => ({
                         tabPress: event => {
                             event.preventDefault();
@@ -57,7 +57,7 @@ export class Home extends Component {
                             <MaterialCommunityIcons name="account-group" color={color} size={26} />
                         ),
                     }} />
-                <Tab.Screen name="Profile" component={Profile}
+                <Tab.Screen name="ProfileScreen" component={Profile}
                 listeners={({ navigation }) => ({
                     tabPress: event => {
                         event.preventDefault();

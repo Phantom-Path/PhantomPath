@@ -30,6 +30,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Home from "./screens/Home";
 import Map from "./screens/Map";
+import Profile from "./screens/Profile";
 import Friends from "./screens/Friends";
 import Chat from "./screens/Chat";
 import CreateChat from "./screens/CreateChat";
@@ -64,9 +65,16 @@ function MyStack() {
         //   title: 'My profile',
         // }}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Friends"
         component={Friends}
+        // options={{
+        //   title: 'My profile',
+        // }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
         // options={{
         //   title: 'My profile',
         // }}
@@ -84,7 +92,7 @@ function MyStack() {
         // options={{
         //   gestureEnabled: false,
         // }}
-      /> */}
+      />
     </Stack.Navigator>
   );
 }
