@@ -37,7 +37,7 @@ import CreateChat from "./screens/CreateChat";
 
 import Landing from "./screens/Landing";
 import Register from "./screens/Register";
-import Login from "./screens/Register";
+import Login from "./screens/Login";
 
 const Stack = createStackNavigator();
 
@@ -139,8 +139,8 @@ export default class App extends React.Component {
               component={Landing}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
           </Stack.Navigator>
         </NavigationContainer>
       );
