@@ -1,15 +1,10 @@
+import { StatusBar } from "expo-status-bar";
 import React from "react";
-// import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 // import MapView, {  Marker, Callout } from "react-native-maps";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
-import Login from "./screens/Login";
-import Home from "./screens/Home";
-import Friends from "./screens/Friends";
-import Chat from "./screens/Chat";
-import CreateChat from "./screens/CreateChat";
-import Map from "./screens/Map";
-import RegisterScreen from "./component/auth/Register";
+
+import * as firebase from "firebase";
+// import { Provider } from 'react-redux'
 //PROVIDER_GOOGLE,
 
 const firebaseConfig = {
@@ -25,6 +20,18 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+
+import Login from "./screens/Login";
+import Home from "./screens/Home";
+import Friends from "./screens/Friends";
+import Chat from "./screens/Chat";
+import CreateChat from "./screens/CreateChat";
+import Map from "./screens/Map";
+
+import RegisterScreen from "./component/auth/Register";
 
 const Stack = createStackNavigator();
 
@@ -93,7 +100,7 @@ function MyStack() {
 //   );
 // }
 
-export default class App extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super();
     this.state = {

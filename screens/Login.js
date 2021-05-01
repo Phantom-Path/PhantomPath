@@ -23,7 +23,7 @@ export default function Login({ navigation }) {
   const [keyText, setkeyText] = useState("");
 
   const login = (userText, keyText) => {
-    if (!userText && !userText) {
+    if (!userText && !keyText) {
       Alert.alert("Error", "Please enter a ticker", { username: "Ok" });
     } else {
       setUser((prevUsername) => {
@@ -52,7 +52,7 @@ export default function Login({ navigation }) {
         onChangeText={(textValue) => setkeyText(textValue)}
       />
 
-      <TouchableOpacity style={styles.btn} onPress={login(userText, keyText)}>
+      <TouchableOpacity style={styles.btn} onPress={() => login(userText, keyText)}>
         <Text style={styles.btnText}>Sign In</Text>
       </TouchableOpacity>
 
