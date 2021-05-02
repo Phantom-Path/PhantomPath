@@ -16,8 +16,8 @@ export default class LocationDemo extends React.Component {
   constructor() {
     super();
     this.state = {
-      latitude: 40.6734,
-      longitude: -74.0083,
+      latitude: 40.7051,
+      longitude: -74.0092,
       error: null,
       Address: null,
     };
@@ -61,6 +61,7 @@ export default class LocationDemo extends React.Component {
               latitude: this.state.latitude,
               longitude: this.state.longitude,
             }}
+            pinColor="red"
           ></Marker>
         </MapView>
       </View>
