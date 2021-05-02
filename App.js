@@ -2,10 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { Provider } from 'react-redux'
-import { store } from './store'
-
-
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 import * as firebase from "firebase";
 // import { Provider } from 'react-redux'
@@ -38,6 +36,8 @@ import CreateChat from "./screens/CreateChat";
 import Landing from "./screens/Landing";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
+
+import Test from "./screens/Test"; //test
 
 const Stack = createStackNavigator();
 
@@ -89,6 +89,13 @@ function MyStack() {
       <Stack.Screen
         name="CreateChat"
         component={CreateChat}
+        // options={{
+        //   gestureEnabled: false,
+        // }}
+      />
+      <Stack.Screen
+        name="Test"
+        component={Test} //test
         // options={{
         //   gestureEnabled: false,
         // }}
@@ -148,9 +155,9 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-      <NavigationContainer>
-        <MyStack />
-      </NavigationContainer>
+        <NavigationContainer>
+          <MyStack />
+        </NavigationContainer>
       </Provider>
     );
   }
