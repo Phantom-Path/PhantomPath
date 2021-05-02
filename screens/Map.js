@@ -8,34 +8,64 @@ import {
   TouchableOpacity,
 } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
+import * as Location from "expo-location";
 
-//PROVIDER_GOOGLE,
+//PROVIDER_GOOGLE, api key:
 
-export default function Map() {
-  return (
-    <View style={styles.container}>
-      <MapView
-        // provider={PROVIDER_GOOGLE}
-        style={styles.map}
-        initialRegion={{
-          latitude: 40.6734,
-          longitude: -74.0083,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
-        loadingEnabled
-        loadingBackgroundColor="white"
-        loadingIndicatorColor="black"
-      >
-        <Marker
-          coordinate={{
-            latitude: 40.6734,
-            longitude: -74.0083,
+export default class LocationDemo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      latitude: 40.6734,
+      longitude: -74.0083,
+      error: null,
+      Address: null,
+    };
+  }
+
+  async componentDidMount() {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied");
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    let currentLocation = JSON.stringify(location);
+    currentLocation = await JSON.parse(currentLocation);
+    console.log(currentLocation);
+    this.setState({
+      latitude: currentLocation.coords.latitude,
+      longitude: currentLocation.coords.longitude,
+    });
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <MapView
+          // provider={PROVIDER_GOOGLE}
+          style={styles.map}
+          initialRegion={{
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
           }}
-        ></Marker>
-      </MapView>
-    </View>
-  );
+          loadingEnabled
+          loadingBackgroundColor="white"
+          loadingIndicatorColor="black"
+        >
+          <Marker
+            coordinate={{
+              latitude: this.state.latitude,
+              longitude: this.state.longitude,
+            }}
+          ></Marker>
+        </MapView>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
