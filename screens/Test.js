@@ -35,27 +35,22 @@ export default class LocationDemo extends React.Component {
     let location = await Location.getCurrentPositionAsync({});
     let currentLocation = JSON.stringify(location);
     currentLocation = await JSON.parse(currentLocation);
-    console.log(currentLocation);
+    // console.log(currentLocation);
     this.setState({
       latitude: currentLocation.coords.latitude,
       longitude: currentLocation.coords.longitude,
     });
-
-    // async componentDidMount() {
-    //   let { status } = await Location.requestForegroundPermissionsAsync();
-    //   if (status !== "granted") {
-    //     setErrorMsg("Permission to access location was denied");
-    //     return;
-    //   }
-
-    //   let location = await Location.getCurrentPositionAsync({});
-    //   let currentLocation = JSON.stringify(location);
-    //   currentLocation = await JSON.parse(currentLocation);
-    //   console.log(location);
-    //   this.setState({
-    //     latitude: location.coords.latitude,
-    //     longitude: location.coords.longitude,
-    //   });
+  }
+  async componentDidUpdate() {
+    let location = await Location.getCurrentPositionAsync({});
+    let currentLocation = JSON.stringify(location);
+    currentLocation = await JSON.parse(currentLocation);
+    console.log(currentLocation);
+    console.log("updating");
+    this.setState({
+      latitude: currentLocation.coords.latitude,
+      longitude: currentLocation.coords.longitude,
+    });
   }
 
   render() {
