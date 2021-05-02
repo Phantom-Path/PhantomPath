@@ -1,3 +1,67 @@
+import React from "react";
+import { GiftedChat } from "react-native-gifted-chat";
+import { Platform, KeyboardAvoidingView, SafeAreaView } from "react-native";
+import Fire from "../Fire";
+
+export default class Test extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+    };
+  }
+
+  get user() {
+    return {
+      _id: Fire.uid, //adjust?
+      // name: this.props.navigation.state.params.name, //change
+    };
+  }
+
+  componentDidMount() {
+    Fire.get((message) =>
+      this.setState((previous) => ({
+        message: GiftedChat.append(previous.messages, message),
+      }))
+    );
+  }
+
+  componentWillUnmount() {
+    Fire.off;
+  }
+
+  render() {
+    const chat = (
+      <GiftedChat
+        messages={this.state.messages}
+        onSend={Fire.send}
+        user={this.user}
+      />
+      // <GiftedChat
+      // messages={this.state.messages}
+      // onSend={Fire.send}
+      // user='altus'
+      // />
+    );
+
+    if (Platform.OS === "android") {
+      return (
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior="padding"
+          keyboardVerticalOffset={30}
+          enabled
+        >
+          {chat}
+        </KeyboardAvoidingView>
+      );
+    }
+    return <SafeAreaView style={{ flex: 1 }}>{chat}</SafeAreaView>;
+  }
+}
+
+//-------------------------------------------------------
+
 // import React from "react";
 // import {
 //   StyleSheet,
@@ -96,8 +160,7 @@
 
 //-------------------------------------------------------
 
-{
-  /* <MapView
+/* <MapView
           style={StyleSheet.absoluteFillObject}
           initialRegion={{
             latitude: 40.6734,
@@ -130,28 +193,27 @@
             );
           })}
         </MapView> */
-}
 
 //-------------------------------------------------------
 
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// import React from "react";
+// import { StyleSheet, Text, View } from "react-native";
 
-export default function Test () {
-  return (
-    <View style={styles.container}>
-      <Text>Test</Text>
-    </View>
-  );
-}
+// export default function Test() {
+//   return (
+//     <View style={styles.container}>
+//       <Text>Test</Text>
+//     </View>
+//   );
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+// });
 
 //-------------------------------------------------------
