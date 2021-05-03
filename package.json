@@ -10,6 +10,7 @@
     "seed": "node script/seed.js"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-native-community/google-signin": "^5.0.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^11.4.1",
@@ -36,6 +37,7 @@
     "react-native-google-login": "^1.2.5",
     "react-native-location": "^2.5.0",
     "react-native-maps": "0.27.1",
+    "react-native-paper": "^4.8.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~2.15.2",
