@@ -82,8 +82,12 @@ function Profile(props) {
   return (
     <View style={styles.container}>
       <View style={styles.containerInfo}>
-        <Text>{user.name}</Text>
-        <Text>{user.email}</Text>
+        <Image
+          style={styles.image}
+          source={require("../assets/blank_avatar.png")}
+        />
+        <Text style={styles.text}>{user.name}</Text>
+        <Text style={styles.text}>{user.email}</Text>
 
         {props.route.params.uid !== firebase.auth().currentUser.uid ? (
           <View>
@@ -117,6 +121,10 @@ function Profile(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 30,
   },
   containerInfo: {
     margin: 20,
@@ -128,10 +136,21 @@ const styles = StyleSheet.create({
     flex: 1 / 3,
   },
   image: {
-    flex: 1,
-    aspectRatio: 1 / 1,
+    height: 200,
+    width: 200,
   },
+  text: {
+    marginTop: 7,
+    fontWeight: "600",
+    fontSize: 20,
+    padding: 7,
+  },
+  // image: {
+  //   flex: 1,
+  //   aspectRatio: 1 / 1,
+  // },
 });
+
 const mapStateToProps = (store) => ({
   currentUser: store.userState.currentUser,
   posts: store.userState.posts,

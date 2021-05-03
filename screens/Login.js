@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Button, TextInput } from 'react-native'
+import { View, Button, TextInput, StyleSheet } from 'react-native'
 
 import firebase from 'firebase'
 
@@ -28,12 +28,14 @@ export class Login extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <TextInput
+                    style={styles.input}
                     placeholder="email"
                     onChangeText={(email) => this.setState({ email })}
                 />
                 <TextInput
+                    style={styles.input}
                     placeholder="password"
                     secureTextEntry={true}
                     onChangeText={(password) => this.setState({ password })}
@@ -47,5 +49,26 @@ export class Login extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#fff",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 30,
+    },
+    input: {
+      height: 50,
+      width: "100%",
+      borderWidth: 1,
+      marginBottom: 20,
+      borderColor: "gray",
+      borderRadius: 500 / 2,
+      fontWeight: "600",
+      fontSize: 20,
+      textAlign: "center"
+    },
+  });
 
 export default Login
