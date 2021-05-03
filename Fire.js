@@ -33,12 +33,11 @@ class Fire {
   };
 
   send = (messages) => {
-    //keep
     messages.forEach((item) => {
       const message = {
         text: item.text,
         timestamp: firebase.database.ServerValue.TIMESTAMP,
-        user: item.user, //adjust?
+        user: item.user,
       };
 
       this.db.push(message);
@@ -47,20 +46,22 @@ class Fire {
 
   parse = (message) => {
     const { user, text, timestamp } = message.val();
-    const { key: _id } = message; //confirm if this is firebase default id
+    const { key: _id } = message; //confirm if this is firebase default id _id
     const createdAt = new Date(timestamp);
 
     return {
-      _id, //confirm if this is firebase default id
+      _id, //confirm if this is firebase default id _id
       createdAt,
       text,
       user,
     };
   };
+  //helper func
 
   get = (callback) => {
     this.db.on("child_added", (snapshot) => callback(this.parse(snapshot)));
   };
+  //this gets the parsed message
 
   off() {
     this.db.off();
@@ -69,9 +70,10 @@ class Fire {
   get db() {
     return firebase.database().ref("messages");
   }
+  //db.on is a built in method
 
   get uid() {
-    return (firebase.auth().currentUser || {}).uid; //make sure current user is the same / make sure uid is the same
+    return (firebase.auth().currentUser || {}).uid;
   }
 }
 

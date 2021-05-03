@@ -2,6 +2,10 @@
 //User.belongsToMany(User, { as: 'friends', through: 'friendship' })
 //User.belongsTo(Coffee, { as: 'favoriteCoffee' })
 
+//Hello World
+//Test for github # 2
+
+
 // import React from "react";
 // import {
 //   StyleSheet,
