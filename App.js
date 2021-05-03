@@ -8,19 +8,6 @@ import { store } from "./store";
 import * as firebase from "firebase";
 //PROVIDER_GOOGLE,
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBkAffiM30sGBZjz87CS7EcS7fS43kGAJ0",
-//   authDomain: "phantompath-330cc.firebaseapp.com",
-//   projectId: "phantompath-330cc",
-//   storageBucket: "phantompath-330cc.appspot.com",
-//   messagingSenderId: "168126105367",
-//   appId: "1:168126105367:web:5b3401ca04d6891e645952",
-//   measurementId: "G-C67ZDG901B",
-// };
-
-// if (firebase.apps.length === 0) {
-//   firebase.initializeApp(firebaseConfig);
-// }
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
