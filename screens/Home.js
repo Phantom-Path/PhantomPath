@@ -56,16 +56,7 @@ export class Home extends Component {
             ),
           }}
         />
-        <Tab.Screen
-          name="Test"
-          component={Test}
-          navigation={this.props.navigation}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="magnify" color={color} size={26} />
-            ),
-          }}
-        />
+
         <Tab.Screen
           name="FriendsScreen"
           component={Friends}
@@ -82,6 +73,30 @@ export class Home extends Component {
                 color={color}
                 size={26}
               />
+            ),
+          }}
+        />
+        {/* <Tab.Screen
+          name="ChatScreen"
+          component={Chat}
+          navigation={this.props.navigation}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="message-text-outline"
+                color={color}
+                size={26}
+              />
+            ),
+          }}
+        /> */}
+        <Tab.Screen
+          name="Test"
+          component={Test}
+          navigation={this.props.navigation}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="message-text-outline" color={color} size={26} />
             ),
           }}
         />
