@@ -2,19 +2,22 @@ import React from "react";
 import { GiftedChat } from "react-native-gifted-chat";
 import { Platform, KeyboardAvoidingView, SafeAreaView } from "react-native";
 import Fire from "../Fire";
+import firebase from "firebase";
+require("firebase/firestore")
 
 export default class Test extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      messages: [],
-    };
   }
+  state = {
+    messages: [],
+  };
+
 
   get user() {
     return {
-      _id: Fire.uid, //adjust?
-      // name: this.props.navigation.state.params.name, //change
+      _id: firebase.auth().currentUser.uid, //Fire.uid, adjust?
+      name: firebase.auth().currentUser.email //this.props.navigation.state.params.name, //change
     };
   }
 
@@ -25,6 +28,7 @@ export default class Test extends React.Component {
       }))
     );
   }
+  //this sets the messages
 
   componentWillUnmount() {
     Fire.off;
@@ -34,18 +38,23 @@ export default class Test extends React.Component {
     const chat = (
       <GiftedChat
         messages={this.state.messages}
+        //[{text: "someshit", user: "nigga"}, {text: "Other shit", user: "nigga"}, {text: "this shit", user: "nigga"}]
+        //messages is an array of objects
         onSend={Fire.send}
         user={this.user}
+        //{uid: 123, name: "nigga"}
+        //user is an object
       />
       // <GiftedChat
       // messages={this.state.messages}
       // onSend={Fire.send}
-      // user='altus'
+      // user={this.user}
       // />
     );
 
     if (Platform.OS === "android") {
       return (
+
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior="padding"
@@ -54,8 +63,20 @@ export default class Test extends React.Component {
         >
           {chat}
         </KeyboardAvoidingView>
+
       );
     }
+    // console.log("navigation---->", this.props.navigation)
+    // console.log("Fire---->", Fire)
+    // console.log("this.props---->", this.props)
+    // console.log("auth---->", firebase.auth())
+    console.log("state.message", this.state.messages)
+    console.log("firebase database", firebase.database().ref())
+    console.log("firebase database User", firebase.firestore()
+    .collection("users"))
+
+    //firebase.database().ref("messages")
+    //this.props.navigation.state.params.name
     return <SafeAreaView style={{ flex: 1 }}>{chat}</SafeAreaView>;
   }
 }

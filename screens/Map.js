@@ -63,6 +63,28 @@ export default class LocationDemo extends React.Component {
             }}
             pinColor="red"
           ></Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 40.705137,
+              longitude: -74.007624,
+            }}
+            pinColor="red"
+          ></Marker>
+          <Marker
+            coordinate={{
+              latitude: 40.715317,
+              longitude: -73.999542,
+            }}
+            pinColor="red"
+          ></Marker>
+          <Marker
+            coordinate={{
+              latitude: 40.705417,
+              longitude: -74.017241,
+            }}
+            pinColor="red"
+          ></Marker>
         </MapView>
       </View>
     );
