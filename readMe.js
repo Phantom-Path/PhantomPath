@@ -3,6 +3,8 @@
 //User.belongsTo(Coffee, { as: 'favoriteCoffee' })
 
 //Hello World
+//Test for github
+
 
 // import React from "react";
 // import {
